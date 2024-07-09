@@ -2,6 +2,7 @@ import time
 import pytest
 from facades.main_method import API
 
+
 @pytest.fixture(scope="session")
 def api():
     yield API()

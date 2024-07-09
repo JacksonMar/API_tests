@@ -13,8 +13,15 @@ This project contains automated tests for APIs using `pytest` and `playwright`.
     git clone https://github.com/JacksonMar/API_tests.git
     cd API_tests
     ```
+2. Create venv
+   ```sh
+   python3 -m venv .venv
+   ```
+   ```sh
+   source .venv/bin/activate
+   ```
 
-2. Install the dependencies:
+3. Install the dependencies:
     ```sh
     pip install -r requirements.txt
     ```

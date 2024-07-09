@@ -1,5 +1,3 @@
-import os
-
 import requests
 from tests.data import Pets
 from pathlib import Path
