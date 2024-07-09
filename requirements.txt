@@ -1,0 +1,6 @@
+pytest-playwright
+pytest
+playwright
+flaky
+requests
+pytest-html
