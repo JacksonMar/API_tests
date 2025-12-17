@@ -9,31 +9,21 @@ class STORE:
     }
 
     def ordering(self, date_order):
-
         url = self.BASE_URL + "store/order"
         response = requests.post(url, headers=self.headers, json=date_order)
-        assert response.status_code == 200
-        order = response.json()
-        return order
+        return response
 
     def get_order(self, id):
         url = self.BASE_URL + "store/order/" + str(id)
-        assert int(id) <= 10
         response = requests.get(url, headers=self.headers)
-        assert response.status_code == 200
-        order_info = response.json()
-        return order_info
+        return response
 
     def inventory_orders(self):
         url = self.BASE_URL + "store/inventory"
         response = requests.get(url, headers=self.headers)
-        list_inventory = response.json()
-        return list_inventory
+        return response
 
     def delete_order(self, id):
         url = self.BASE_URL + "store/order/" + str(id)
         response = requests.delete(url, headers=self.headers)
-        assert response.status_code == 200
-        headers = response.headers
-        response = response.json()
-        return response, headers
+        return response
