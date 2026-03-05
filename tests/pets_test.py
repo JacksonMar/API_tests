@@ -30,7 +30,7 @@ class TestPets:
         pet = api.pet.get_pet(data.Pets.pet.value.get("id"))
         assert isinstance(pet.get(param), type)
 
-    @pytest.mark.lou
+    @pytest.mark.low
     def test_filter_pet_by_status(self, api, time_response):
         list_pets = api.pet.filter_pet_by_status(data.Pets.PETS_STATUS.value.get(1))
         for i in list_pets:

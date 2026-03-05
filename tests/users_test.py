@@ -12,7 +12,7 @@ class TestUsers:
         assert user.status_code == 200
 
     @pytest.mark.medium
-    @pytest.mark.lou
+    @pytest.mark.low
     def test_get_user(self, api, time_response):
         user_name = User.USER_TEST_DATA.value.get("username")
         user = api.user.get_user(user_name)
@@ -37,8 +37,8 @@ class TestUsers:
         user, self.USER_SESSION = api.user.user_login(
             User.USER_TEST_DATA.value.get("username"), User.USER_TEST_DATA.value.get("password"))
         user = user.json()
-        massage = user.get("message")
-        assert "logged in user session:" in massage
+        message = user.get("message")
+        assert "logged in user session:" in message
 
     @pytest.mark.medium
     def test_update_user(self, api, time_response):
@@ -54,7 +54,7 @@ class TestUsers:
                 and barsik.get("id") == User.USER_Barsik_DATA.value.get("id")
                 and barsik.get("email") == User.USER_Barsik_DATA.value.get("email"))
 
-    @pytest.mark.lou
+    @pytest.mark.low
     def test_logout_user(self, api, time_response):
         response, headers = api.user.user_logout()
         assert "Authorization" in headers.get("access-control-allow-headers")

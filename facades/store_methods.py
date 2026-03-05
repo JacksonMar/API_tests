@@ -27,8 +27,8 @@ class STORE:
     def inventory_orders(self):
         url = self.BASE_URL + "store/inventory"
         response = requests.get(url, headers=self.headers)
-        lisr_inventory = response.json()
-        return lisr_inventory
+        list_inventory = response.json()
+        return list_inventory
 
     def delete_order(self, id):
         url = self.BASE_URL + "store/order/" + str(id)

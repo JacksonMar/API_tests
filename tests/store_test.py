@@ -24,7 +24,7 @@ class TestStore:
         order_info = api.store.get_order(data.Orders.DATA_ORDER.value.get("id"))
         assert order_info.get("petId") == 228
 
-    @pytest.mark.lou
+    @pytest.mark.low
     def test_get_inventory_orders(self, api, time_response):
         self.INVENTORY.update(api.store.inventory_orders())
         assert isinstance(self.INVENTORY.get("available"), int)
@@ -52,8 +52,8 @@ class TestStore:
         order = api.store.get_order(randrange(30))
         assert order.get("status") == "placed"
 
-    @pytest.mark.lou
-    @pytest.mark.parametrize("param, vale",[
+    @pytest.mark.low
+    @pytest.mark.parametrize("param, value",[
         ("id", int),
         ("petId", str),
         ("quantity", int),
@@ -61,13 +61,13 @@ class TestStore:
         ("status", str),
         ("complete", bool)
     ])
-    def test_check_types_order(self, api, time_response, param, vale):
+    def test_check_types_order(self, api, time_response, param, value):
         order_id = randrange(9)
         try:
             order = api.store.get_order(order_id)
-            assert isinstance(order.get(param), vale)
+            assert isinstance(order.get(param), value)
         except AssertionError:
-            print(" Order: " + str(order_id) + " nof found")
+            print(" Order: " + str(order_id) + " not found")
 
 
 
