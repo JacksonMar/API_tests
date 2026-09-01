@@ -30,10 +30,11 @@ class PETS:
             'accept': 'application/json'
         }
         project_root = Path(__file__).parent.parent
-        file_path = project_root / 'Screenshot.png'
-        files = {"file": (file_path.name, file_path.open('rb'), 'image/png')}
+        file_path = project_root / 'tests' / 'fixtures' / 'pet.png'
         data = {"additionalMetadata": "some_date"}
-        response = requests.post(url, headers=headers, files=files, data=data)
+        with file_path.open('rb') as image:
+            files = {"file": (file_path.name, image, 'image/png')}
+            response = requests.post(url, headers=headers, files=files, data=data)
         return response
 
     def delete_pet(self, id):

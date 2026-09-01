@@ -37,14 +37,19 @@ class TestStore:
     def test_create_sold_order(self, api, time_response):
         date_order = data.Orders.DATA_ORDER.value.copy()
         date_order["status"] = "sold"
-        TestStore.ORDER_ID = randrange(100)
+        # kept clear of the 1-10 range the other order tests write to
+        TestStore.ORDER_ID = randrange(1000, 10000)
         date_order["id"] = TestStore.ORDER_ID
         response = api.store.ordering(date_order)
         assert response.status_code == 200
-        response = api.store.inventory_orders()
+
+        # the inventory counters are global to the shared sandbox and move
+        # under other clients, so the order itself is what gets asserted
+        response = api.store.get_order(TestStore.ORDER_ID)
         assert response.status_code == 200
-        inventory = response.json()
-        assert inventory.get("sold") == (self.INVENTORY.get("sold"))
+        order = response.json()
+        assert order.get("id") == TestStore.ORDER_ID
+        assert order.get("status") == "sold"
 
     @pytest.mark.high
     def test_delete_order(self, api, time_response):

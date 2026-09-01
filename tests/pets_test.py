@@ -55,7 +55,7 @@ class TestPets:
         response = api.pet.add_image_to_pet()
         assert response.status_code == 200
         result = response.json()
-        assert "some_date" in result.get("message") and "Screenshot.png" in result.get("message")
+        assert "some_date" in result.get("message") and "pet.png" in result.get("message")
 
     @pytest.mark.medium
     def test_update_pet(self, api, time_response):
