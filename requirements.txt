@@ -1,6 +1,3 @@
-pytest-playwright
-pytest
-playwright
-flaky
-requests
-pytest-html
+pytest==9.1.1
+pytest-html==4.2.0
+requests==2.34.2
